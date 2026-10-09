@@ -9,4 +9,4 @@
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
 
-- The exported site lives as static files in public/site and is shown on / in a full-screen iframe; the /wp-content/$ server route redirects original WordPress file paths to the downloaded copies (map in src/lib/site-asset-map.json) because the site scripts request files by their original paths.
+- The site's original server HTML (src/lib/site-pages/*.html) is served at its original addresses (/, /contact, /projects, /world) by route server handlers, because the site's scripts pick the 3D scene from the address; static files live in public/site/assets and the /wp-content/$ route redirects original WordPress file paths to them via src/lib/site-asset-map.json.
