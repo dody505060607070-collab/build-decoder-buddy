@@ -94,7 +94,7 @@ export function createPavilion(
         const s = box.getSize(new THREE.Vector3()).addScalar(0.6);
         const hit = new THREE.Mesh(new THREE.BoxGeometry(s.x, s.y, s.z), new THREE.MeshBasicMaterial({ visible: false }));
         box.getCenter(hit.position);
-        hit.userData.service = i;
+        hit.userData["service"] = i;
         scene.add(hit);
         return [hit];
       });
@@ -149,7 +149,7 @@ export function createPavilion(
     if (!hotspots.length || travel) return;
     ray.setFromCamera(pointer, camera);
     const hit = ray.intersectObjects(hotspots)[0];
-    if (hit) opts.onService(hit.object.userData.service);
+    if (hit) opts.onService(hit.object.userData["service"]);
   };
   addEventListener("pointermove", onMove);
   canvas.addEventListener("click", onClick);
@@ -170,7 +170,7 @@ export function createPavilion(
     smooth.lerp(travel ? new THREE.Vector2() : pointer, 0.05);
     look.copy(target).add(new THREE.Vector3(smooth.x * 0.8, smooth.y * 0.4, 0));
     camera.lookAt(look);
-    if (water) water.material.uniforms.time.value += d * 0.4;
+    if (water) water.material.uniforms["time"]!.value += d * 0.4;
     renderer.render(scene, camera);
   });
 
