@@ -7,3 +7,4 @@
 - [ ] Loader cube letters (still U-N-S-E-E-N)
 - [ ] Accounts page (waiting on user: what it should contain)
 - [x] Service cards and social buttons no longer open unseen.co
+- [x] Digitmask Mask Pavilion 3D world at /pavilion (preview, original site untouched)

@@ -48,7 +48,7 @@ function Pavilion() {
   const nav = [["home", "Home"], ["services", "Services"], ["contact", "Contact"]] as const;
 
   return (
-    <div className="fixed inset-0 overflow-hidden bg-background text-foreground">
+    <div className="dark fixed inset-0 overflow-hidden bg-background text-foreground">
       <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" />
 
       {!loaded && (

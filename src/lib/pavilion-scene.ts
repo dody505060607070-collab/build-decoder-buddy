@@ -31,6 +31,7 @@ export function createPavilion(
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: !mobile });
   renderer.setPixelRatio(Math.min(devicePixelRatio, mobile ? 1.25 : 1.5));
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 0.65;
   renderer.outputColorSpace = THREE.SRGBColorSpace;
 
   const scene = new THREE.Scene();
