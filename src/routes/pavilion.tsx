@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import type { View } from "@/lib/pavilion-scene";
+import { SERVICE_IMAGES, type View } from "@/lib/pavilion-scene";
+import skyUrl from "@/assets/pavilion/sky.jpg";
 
 export const Route = createFileRoute("/pavilion")({
   head: () => ({
@@ -28,7 +29,7 @@ function Pavilion() {
   const api = useRef<{ goTo: (v: View) => void; dispose: () => void } | null>(null);
   const [view, setView] = useState<View>("home");
   const [loaded, setLoaded] = useState(false);
-  const [progress, setProgress] = useState(0);
+  const [underwater, setUnderwater] = useState(false);
   const [service, setService] = useState<number | null>(null);
 
   useEffect(() => {
@@ -37,7 +38,7 @@ function Pavilion() {
       if (!alive || !canvasRef.current) return;
       api.current = createPavilion(canvasRef.current, {
         onLoaded: () => setLoaded(true),
-        onProgress: setProgress,
+        onUnderwater: setUnderwater,
         onService: setService,
       });
     });
@@ -51,13 +52,8 @@ function Pavilion() {
     <div className="dark fixed inset-0 overflow-hidden bg-background text-foreground">
       <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" />
 
-      {!loaded && (
-        <div className="absolute inset-0 z-20 flex flex-col items-center justify-center gap-4 bg-background">
-          <p className="text-sm tracking-[0.3em] uppercase">Digitmask Pavilion</p>
-          <div className="h-px w-48 bg-muted"><div className="h-px bg-foreground transition-all" style={{ width: `${progress * 100}%` }} /></div>
-        </div>
-      )}
-
+      <div aria-hidden className={`pointer-events-none absolute inset-0 transition-opacity duration-1000 ${loaded ? "opacity-0" : "opacity-100"}`} style={{ backgroundImage: `url(${skyUrl})`, backgroundSize: "cover", backgroundPosition: "center 60%" }} />
+      <div aria-hidden className={`pointer-events-none absolute inset-0 transition-opacity duration-700 ${underwater ? "opacity-100" : "opacity-0"}`} style={{ background: "radial-gradient(ellipse at 50% 0%, transparent 30%, color-mix(in oklab, #1e0a3c 75%, transparent) 100%)" }} />
       <header className="absolute inset-x-0 top-0 z-10 flex items-center justify-between p-6">
         <a href="/" className="text-sm tracking-[0.25em] uppercase">Digitmask FZE</a>
         <nav className="flex gap-6 text-sm">
@@ -76,10 +72,17 @@ function Pavilion() {
         </div>
       )}
       {view === "services" && service === null && (
-        <p className="absolute bottom-12 left-6 z-10 text-sm opacity-80">Click a display to explore a service.</p>
+        <div className="absolute inset-x-0 bottom-10 z-10 flex flex-wrap justify-center gap-3 px-6">
+          {SERVICES.map((s, i) => (
+            <button key={s.title} onClick={() => setService(i)} className="rounded-full border border-border bg-background/40 px-5 py-2 text-sm backdrop-blur transition hover:bg-background/70">
+              {s.title}
+            </button>
+          ))}
+        </div>
       )}
       {service !== null && (
         <div role="dialog" aria-label={SERVICES[service]!.title} className="absolute bottom-12 left-6 z-10 max-w-sm rounded-lg border border-border bg-background/85 p-6 backdrop-blur">
+          <img src={SERVICE_IMAGES[service]} alt="" width={1024} height={768} className="mb-4 w-full rounded-md" />
           <h2 className="text-2xl font-light">{SERVICES[service]!.title}</h2>
           <p className="mt-2 text-sm opacity-80">{SERVICES[service]!.text}</p>
           <button onClick={() => setService(null)} className="mt-4 text-sm underline">Close</button>
