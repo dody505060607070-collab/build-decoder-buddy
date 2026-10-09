@@ -4,8 +4,8 @@
 
   var TRACKS = [
     { title: "Spill Your Time", artist: "KatzPascale", art: "/site/assets/art-syt.jpg", src: null },
-    { title: "I Wanna Be Yours", artist: "Arctic Monkeys", art: "/site/assets/art-iwby.jpg", src: "/__l5e/assets-v1/1101c507-263b-4c4a-974b-98599c9d20fd/i-wanna-be-yours.mp3" },
-    { title: "Blinding Lights", artist: "The Weeknd", art: "/site/assets/art-bl.jpg", src: "/__l5e/assets-v1/f7c86951-f160-436f-8922-39bf041cffd8/blinding-lights.mp3" }
+    { title: "I Wanna Be Yours", artist: "Arctic Monkeys", art: "/site/assets/art-iwby.jpg", src: "/site/assets/track-i-wanna-be-yours.mp3" },
+    { title: "Blinding Lights", artist: "The Weeknd", art: "/site/assets/art-bl.jpg", src: "/site/assets/track-blinding-lights.mp3" }
   ];
   var current = 0, muted = false, bypass = false;
   var alt = new Audio();
