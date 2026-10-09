@@ -135,7 +135,7 @@ export function createPavilion(canvas: HTMLCanvasElement, opts: { onLoaded: () =
     const angle = (i - 1.5) * 0.42;
     g.position.set(Math.sin(angle) * 9, -5, -3 + (1 - Math.cos(angle)) * 6 - 0);
     g.rotation.y = -angle;
-    const frame = new THREE.Mesh(new THREE.PlaneGeometry(3.5, 2.7), new THREE.MeshBasicMaterial({ color: [0x6d28d9, 0xc026d3, 0xff7a1a, 0xc026d3][i], transparent: true, opacity: 0.85 }));
+    const frame = new THREE.Mesh(new THREE.PlaneGeometry(3.5, 2.7), new THREE.MeshBasicMaterial({ color: [0x6d28d9, 0xc026d3, 0xff7a1a, 0xc026d3][i]!, transparent: true, opacity: 0.85 }));
     frame.position.z = -0.02;
     const img = new THREE.Mesh(new THREE.PlaneGeometry(3.3, 2.5), new THREE.MeshBasicMaterial({ map: tex, toneMapped: false }));
     img.userData["service"] = i;

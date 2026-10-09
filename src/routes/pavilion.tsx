@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import type { View } from "@/lib/pavilion-scene";
+import { SERVICE_IMAGES, type View } from "@/lib/pavilion-scene";
 import skyUrl from "@/assets/pavilion/sky.jpg";
 
 export const Route = createFileRoute("/pavilion")({
@@ -82,6 +82,7 @@ function Pavilion() {
       )}
       {service !== null && (
         <div role="dialog" aria-label={SERVICES[service]!.title} className="absolute bottom-12 left-6 z-10 max-w-sm rounded-lg border border-border bg-background/85 p-6 backdrop-blur">
+          <img src={SERVICE_IMAGES[service]} alt="" width={1024} height={768} className="mb-4 w-full rounded-md" />
           <h2 className="text-2xl font-light">{SERVICES[service]!.title}</h2>
           <p className="mt-2 text-sm opacity-80">{SERVICES[service]!.text}</p>
           <button onClick={() => setService(null)} className="mt-4 text-sm underline">Close</button>
