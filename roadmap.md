@@ -6,3 +6,4 @@
 - [ ] Service card images/descriptions (still original project images)
 - [ ] Loader cube letters (still U-N-S-E-E-N)
 - [ ] Accounts page (waiting on user: what it should contain)
+- [x] Service cards and social buttons no longer open unseen.co
