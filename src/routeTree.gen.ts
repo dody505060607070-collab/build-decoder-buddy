@@ -11,7 +11,6 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ContactRouteImport } from './routes/contact'
-import { Route as PavilionRouteImport } from './routes/pavilion'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as WorldRouteImport } from './routes/world'
 import { Route as WpContentSplatRouteImport } from './routes/wp-content/$'
@@ -24,11 +23,6 @@ const IndexRoute = IndexRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PavilionRoute = PavilionRouteImport.update({
-  id: '/pavilion',
-  path: '/pavilion',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProjectsRoute = ProjectsRouteImport.update({
@@ -50,7 +44,6 @@ const WpContentSplatRoute = WpContentSplatRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
-  '/pavilion': typeof PavilionRoute
   '/projects': typeof ProjectsRoute
   '/world': typeof WorldRoute
   '/wp-content/$': typeof WpContentSplatRoute
@@ -58,7 +51,6 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
-  '/pavilion': typeof PavilionRoute
   '/projects': typeof ProjectsRoute
   '/world': typeof WorldRoute
   '/wp-content/$': typeof WpContentSplatRoute
@@ -67,31 +59,21 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/contact': typeof ContactRoute
-  '/pavilion': typeof PavilionRoute
   '/projects': typeof ProjectsRoute
   '/world': typeof WorldRoute
   '/wp-content/$': typeof WpContentSplatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    '/' | '/contact' | '/pavilion' | '/projects' | '/world' | '/wp-content/$'
+  fullPaths: '/' | '/contact' | '/projects' | '/world' | '/wp-content/$'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/contact' | '/pavilion' | '/projects' | '/world' | '/wp-content/$'
-  id:
-    | '__root__'
-    | '/'
-    | '/contact'
-    | '/pavilion'
-    | '/projects'
-    | '/world'
-    | '/wp-content/$'
+  to: '/' | '/contact' | '/projects' | '/world' | '/wp-content/$'
+  id: '__root__' | '/' | '/contact' | '/projects' | '/world' | '/wp-content/$'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ContactRoute: typeof ContactRoute
-  PavilionRoute: typeof PavilionRoute
   ProjectsRoute: typeof ProjectsRoute
   WorldRoute: typeof WorldRoute
   WpContentSplatRoute: typeof WpContentSplatRoute
@@ -111,13 +93,6 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/pavilion': {
-      id: '/pavilion'
-      path: '/pavilion'
-      fullPath: '/pavilion'
-      preLoaderRoute: typeof PavilionRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/projects': {
@@ -147,7 +122,6 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ContactRoute: ContactRoute,
-  PavilionRoute: PavilionRoute,
   ProjectsRoute: ProjectsRoute,
   WorldRoute: WorldRoute,
   WpContentSplatRoute: WpContentSplatRoute,
