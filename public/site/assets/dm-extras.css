@@ -1,0 +1,93 @@
+/* Music picker */
+.js-global-mute-btn.dm-open { outline: 2px solid #c026d3; outline-offset: 3px; border-radius: 50%; }
+.dm-music {
+  position: fixed; left: 1.5rem; bottom: 5.5rem; z-index: 2147483600;
+  width: 260px; padding: .9rem; border-radius: 20px;
+  background: rgba(24, 18, 32, .82); color: #fff;
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,.14);
+  box-shadow: 0 20px 50px rgba(60, 10, 80, .45);
+  font-family: "Neue Montreal", system-ui, sans-serif;
+  opacity: 0; transform: translateY(10px) scale(.96); transform-origin: bottom left;
+  pointer-events: none; transition: opacity .25s ease, transform .25s ease;
+}
+.dm-music.is-open { opacity: 1; transform: none; pointer-events: auto; }
+.dm-music__label { margin: 0 0 .5rem .2rem; font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; opacity: .6; }
+.dm-music__list { list-style: none; margin: 0; padding: 0; display: grid; gap: .3rem; }
+.dm-music__track {
+  width: 100%; display: flex; align-items: center; gap: .7rem; padding: .4rem;
+  border: 0; border-radius: 999px; background: transparent; color: inherit; cursor: pointer; text-align: left;
+  transition: background .2s;
+}
+.dm-music__track:hover { background: rgba(255,255,255,.08); }
+.dm-music__track.is-active { background: linear-gradient(90deg, rgba(109,40,217,.55), rgba(192,38,211,.45), rgba(255,122,26,.35)); }
+.dm-music__track img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+.dm-music__track.is-active img { animation: dmspin 6s linear infinite; }
+.dm-music.is-muted .dm-music__track img { animation-play-state: paused; }
+.dm-music__track span { min-width: 0; flex: 1; display: flex; flex-direction: column; }
+.dm-music__track b { font-weight: 500; font-size: .9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.dm-music__track small { font-size: .72rem; opacity: .65; }
+.dm-music__eq { display: none; gap: 2px; align-items: flex-end; height: 14px; margin-right: .4rem; }
+.dm-music__track.is-active .dm-music__eq { display: flex; }
+.dm-music__eq em { width: 3px; background: #fff; border-radius: 2px; animation: dmeq .9s ease-in-out infinite; }
+.dm-music__eq em:nth-child(2) { animation-delay: .2s; } .dm-music__eq em:nth-child(3) { animation-delay: .4s; }
+.dm-music.is-muted .dm-music__eq em { animation: none; height: 3px; }
+.dm-music__mute {
+  margin-top: .6rem; width: 100%; display: flex; align-items: center; justify-content: center; gap: .5rem;
+  padding: .55rem; border-radius: 999px; border: 1px solid rgba(255,255,255,.25);
+  background: transparent; color: inherit; font: inherit; font-size: .82rem; cursor: pointer;
+}
+.dm-music__mute:hover { background: rgba(255,255,255,.1); }
+.dm-music__mute-icon { width: 14px; height: 14px; border-radius: 50%; border: 2px solid currentColor; position: relative; }
+.dm-music.is-muted .dm-music__mute-icon::after { content: ""; position: absolute; left: 50%; top: -3px; bottom: -3px; width: 2px; background: currentColor; transform: rotate(45deg); }
+@keyframes dmspin { to { transform: rotate(360deg); } }
+@keyframes dmeq { 0%,100% { height: 4px; } 50% { height: 14px; } }
+@media (max-width: 600px) {
+  .dm-music { left: .75rem; right: auto; bottom: 4.5rem; width: min(230px, calc(100vw - 1.5rem)); padding: .7rem; border-radius: 16px; }
+  .dm-music__track img { width: 34px; height: 34px; }
+  .dm-music__track b { font-size: .82rem; }
+}
+
+/* Project request form */
+.dm-brief {
+  display: none; position: relative; z-index: 20; width: min(460px, 92vw); margin: 0 auto;
+  padding: 1.4rem; border-radius: 22px; text-align: left;
+  background: rgba(255,255,255,.72); color: #2a2230;
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,.8); box-shadow: 0 20px 50px rgba(60,10,80,.18);
+  font-family: "Neue Montreal", system-ui, sans-serif;
+}
+.dm-brief.is-visible { display: block; animation: dmin .45s ease both; }
+.dm-brief ~ * { transition: opacity .2s; }
+.dm-brief.is-visible ~ * { opacity: 0; pointer-events: none; }
+.dm-brief__eyebrow { margin: 0; font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; opacity: .6; }
+.dm-brief__title { margin: .2rem 0 1rem; font-family: "Saol Display", serif; font-style: italic; font-weight: 300; font-size: 1.7rem; line-height: 1.05; }
+.dm-brief__services { border: 0; padding: 0; margin: 0 0 1rem; display: flex; flex-wrap: wrap; gap: .45rem; }
+.dm-brief__services legend { font-size: .78rem; margin-bottom: .45rem; opacity: .75; }
+.dm-brief__services label { cursor: pointer; }
+.dm-brief__services input { position: absolute; opacity: 0; pointer-events: none; }
+.dm-brief__services span { display: inline-block; padding: .45rem .9rem; border-radius: 999px; border: 1px solid rgba(42,34,48,.35); font-size: .85rem; transition: all .2s; }
+.dm-brief__services input:checked + span { background: linear-gradient(90deg,#6d28d9,#c026d3,#ff7a1a); color: #fff; border-color: transparent; }
+.dm-brief__services input:focus-visible + span { outline: 2px solid #c026d3; outline-offset: 2px; }
+.dm-brief__row { display: grid; grid-template-columns: 1fr 1fr; gap: .7rem; }
+.dm-brief__field { display: flex; flex-direction: column; gap: .3rem; margin-bottom: .75rem; font-size: .78rem; }
+.dm-brief__field span { opacity: .75; }
+.dm-brief__field input, .dm-brief__field textarea {
+  width: 100%; box-sizing: border-box; padding: .65rem .85rem; border-radius: 12px; font: inherit; font-size: .92rem;
+  border: 1px solid rgba(42,34,48,.2); background: rgba(255,255,255,.85); color: inherit; resize: vertical;
+}
+.dm-brief__field input:focus, .dm-brief__field textarea:focus { outline: none; border-color: #c026d3; box-shadow: 0 0 0 3px rgba(192,38,211,.18); }
+.dm-brief__error { min-height: 1em; margin: 0 0 .5rem; font-size: .8rem; color: #b4235a; }
+.dm-brief__submit {
+  width: 100%; padding: .8rem; border: 0; border-radius: 999px; cursor: pointer; font: inherit; font-size: .95rem;
+  color: #fff; background: linear-gradient(90deg,#6d28d9,#c026d3,#ff7a1a); transition: transform .2s, opacity .2s;
+}
+.dm-brief__submit:hover { transform: translateY(-1px); }
+.dm-brief__submit:disabled { opacity: .5; cursor: default; }
+.dm-brief__done { margin: .7rem 0 0; text-align: center; font-size: .9rem; }
+@keyframes dmin { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@media (max-width: 600px) {
+  .dm-brief { padding: 1rem; border-radius: 18px; }
+  .dm-brief__title { font-size: 1.35rem; }
+  .dm-brief__row { grid-template-columns: 1fr; gap: 0; }
+}
