@@ -91,7 +91,7 @@
     e.preventDefault();
     var err = f.querySelector(".dm-brief__error");
     var services = [].slice.call(f.querySelectorAll('input[name="service"]:checked')).map(function (x) { return x.value; });
-    var name = f.name.value.trim(), phone = f.phone.value.trim(), email = f.email.value.trim();
+    var v = function (n) { return f.querySelector("[name=" + n + "]").value.trim(); }; var name = v("name"), phone = v("phone"), email = v("email");
     var msg = "";
     if (!services.length) msg = "Please choose at least one service.";
     else if (!name) msg = "Please enter your name.";

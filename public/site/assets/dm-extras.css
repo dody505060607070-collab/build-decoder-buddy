@@ -91,3 +91,4 @@
   .dm-brief__title { font-size: 1.35rem; }
   .dm-brief__row { grid-template-columns: 1fr; gap: 0; }
 }
+@media (max-width: 600px) { [data-togglecontent="project"] { margin-top: .5rem; } .js-contact-content .d-flex.items-center.items-end\@sm { flex-wrap: wrap; row-gap: .5rem; } }
