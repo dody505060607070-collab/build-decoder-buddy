@@ -132,7 +132,7 @@ export function createPavilion(
 
   function goTo(to: View) {
     queue.length = 0;
-    const from = travel ? queue[queue.length - 1] ?? current : current;
+    const from = current;
     if (to === from) return;
     if (from !== "home" && to !== "home") queue.push("home", to);
     else queue.push(to);
