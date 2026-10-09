@@ -249,9 +249,7 @@ export function createPavilion(canvas: HTMLCanvasElement, opts: { onLoaded: () =
 
     smooth.lerp(travel ? new THREE.Vector2() : pointer, 1 - Math.exp(-3 * d));
     sway.set(Math.sin(t * 0.3) * 0.08 + smooth.x * 0.35, Math.sin(t * 0.4) * 0.05 + smooth.y * 0.2, 0);
-    const base = camera.position.clone().sub(sway.clone().multiplyScalar(0.5));
-    camera.position.copy(base.add(sway.clone().multiplyScalar(0.5)));
-    look.copy(target).add(new THREE.Vector3(smooth.x * 1.2, smooth.y * 0.6, 0));
+    look.copy(target).add(sway).add(new THREE.Vector3(smooth.x * 0.9, smooth.y * 0.4, 0));
     camera.lookAt(look);
 
     const isUnder = camera.position.y < UNDER_Y;
