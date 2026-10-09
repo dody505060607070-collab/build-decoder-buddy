@@ -17,12 +17,12 @@ export const SERVICE_IMAGES = [webUrl, systemsUrl, aiUrl, marketingUrl];
 
 const VIEWS: Record<View, { position: number[]; target: number[] }> = {
   home: { position: [0, 2.6, 15], target: [0, 2.8, -6] },
-  services: { position: [0, -5, 5.5], target: [0, -5.2, -3] },
+  services: { position: [0, -5, 8], target: [0, -5.2, -3] },
   contact: { position: [-11, 2.2, 9], target: [-11, 1.7, 3] },
 };
 // Services dives through the pool surface into the underwater gallery.
 const ROUTES: Record<"services" | "contact", { seconds: number; points: number[][] }> = {
-  services: { seconds: 4, points: [[0, 2.6, 15], [0, 2, 11], [0, 0.9, 8], [0, -1.2, 6.5], [0, -3.8, 5.8], [0, -5, 5.5]] },
+  services: { seconds: 4, points: [[0, 2.6, 15], [0, 2, 11], [0, 0.9, 8], [0, -1.2, 6.5], [0, -3.8, 7], [0, -5, 8]] },
   contact: { seconds: 2.8, points: [[0, 2.6, 15], [-3, 2.4, 12], [-6, 2.2, 8], [-7, 2.2, 5], [-10, 2.2, 6], [-11, 2.2, 9]] },
 };
 const v3 = (p: number[]) => new THREE.Vector3(p[0], p[1], p[2]);
@@ -112,7 +112,7 @@ export function createPavilion(canvas: HTMLCanvasElement, opts: { onLoaded: () =
   const seabed = new THREE.Mesh(new THREE.PlaneGeometry(60, 60), caustic);
   seabed.rotation.x = -Math.PI / 2; seabed.position.y = -9; under.add(seabed);
   // surface seen from below
-  const surface = new THREE.Mesh(new THREE.PlaneGeometry(60, 60), new THREE.MeshBasicMaterial({ color: 0xff8fd0, transparent: true, opacity: 0.35, side: THREE.BackSide, fog: false }));
+  const surface = new THREE.Mesh(new THREE.PlaneGeometry(60, 60), new THREE.MeshBasicMaterial({ color: 0xff8fd0, transparent: true, opacity: 0.6, side: THREE.BackSide, fog: false }));
   surface.rotation.x = -Math.PI / 2; surface.position.y = -0.02; under.add(surface);
   // light shafts
   for (let i = 0; i < 7; i++) {

@@ -8,3 +8,4 @@
 - [ ] Accounts page (waiting on user: what it should contain)
 - [x] Service cards and social buttons no longer open unseen.co
 - [x] Digitmask Mask Pavilion 3D world at /pavilion (preview, original site untouched)
+- [x] Pavilion: sky, glow, fireflies, no loading screen, Services dives underwater with 4 service panels
