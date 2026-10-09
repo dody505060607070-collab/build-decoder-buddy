@@ -14,7 +14,7 @@ export const Route = createFileRoute("/wp-content/$")({
         const local = map.files[name];
         const url = new URL(request.url);
         let target: string;
-        if (local) target = `/site/assets/${local}`;
+        if (local) target = `/site/assets/${local}${url.search}`;
         else if (map.external[name]) target = map.external[name];
         else target = `https://unseen.co/wp-content/${splat}${url.search}`;
         return new Response(null, {
