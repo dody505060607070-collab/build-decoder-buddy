@@ -198,10 +198,10 @@ Enter
 <div class="d-flex justify-end items-center w-1/1 w-auto@sm js-navigation">
 <nav class="overflow-hidden d-block js-nav-inner" data-cursor="navWrapper">
 <div class="d-none d-flex@sm align-center justify-end">
-<a href="/" class="nav-item js-nav-item js-nav-home" data-cursor="navItem" data-audio-enter="audio.ratchet" aria-label="Index" title="Index">
+<a href="/" class="nav-item js-nav-item js-nav-home" data-cursor="navItem" data-audio-enter="audio.ratchet" aria-label="Home" title="Home">
 <div class="relative">
-<div class="nav-item__text t-lh-1.1 t-1.2 js-nav-item-text">Index</div>
-<div class="nav-item__text--hover t-lh-0.9 absolute t-serif t-1.3 t-italic js-nav-item-hover-text">Index</div>
+<div class="nav-item__text t-lh-1.1 t-1.2 js-nav-item-text">Home</div>
+<div class="nav-item__text--hover t-lh-0.9 absolute t-serif t-1.3 t-italic js-nav-item-hover-text">Home</div>
 </div>
 </a>
 <a href="/projects/" class="nav-item js-nav-item" data-cursor="navItem" data-audio-enter="audio.ratchet" aria-label="Projects" title="Projects">
@@ -237,13 +237,13 @@ Enter
 <div class="menu open overflow-hidden fixed z-70 h-1/1 js-menu">
 <div class="menu__inner absolute h-1/1 d-flex justify-center justify-start@lg items-center js-menu-inner">
 <div class="menu__nav d-flex items-start w-auto w-1/1@lg">
-<a href="/" class="menu__nav-item relative d-flex items-start js-menu-item js-nav-home" data-cursor="hide" aria-label="Index" title="Index">
+<a href="/" class="menu__nav-item relative d-flex items-start js-menu-item js-nav-home" data-cursor="hide" aria-label="Home" title="Home">
 <span class="menu__nav-number js-menu-number">01</span>
 <span class="menu__text t-ls-tighter relative js-menu-text">
-Index
+Home
 <span class="menu__underline js-active-underline"></span>
 </span>
-<span class="t-serif t-italic t-ls-tighter menu__hover-text js-menu-hover-text">Index</span>
+<span class="t-serif t-italic t-ls-tighter menu__hover-text js-menu-hover-text">Home</span>
 </a>
 <a href="/projects/" class="menu__nav-item relative d-flex items-start js-menu-item" data-cursor="hide" aria-label="Projects" title="Projects">
 <span class="menu__nav-number js-menu-number">02</span>
@@ -487,7 +487,7 @@ class="project-filters__filter__button | js-project-filters:filterBtn">Apps
 <div class="js-view-projects-btn" style="visibility: hidden">
 <a
 href="/projects/"
-title="View our services"
+title="View our work"
 class="btn btn--regular btn--fill btn--light js-manager-ignore js-btn"
 data-btn="fill"
 data-cursor="hide">
@@ -495,7 +495,7 @@ data-cursor="hide">
 <span class="btn__content js-btn-content">
 <span class="d-flex flex-row items-end">
 <span class="btn__text">
-View our services
+View our work
 </span>
 <svg class="btn__icon d-inline-block js-btn-icon">
 <use xlink:href="/wp-content/themes/unseen/public/images/svgsprite.svg#arrow"></use>
@@ -567,8 +567,32 @@ General
 </span>
 </a>
 </div>
+<div class="d-flex ml-1 | js-reveal-anim">
+<a href="#" title="Start a project" class="btn btn--regular btn--border btn--dark js-content-toggle-btn js-btn-not-selected js-manager-ignore js-btn" data-btn="border" data-togglecontent="project" data-router-disabled data-cursor="hide">
+<span class="btn__inner js-btn-inner"><span class="btn__content js-btn-content"><span class="d-flex flex-row items-end"><span class="btn__text">Start a project</span><svg class="btn__icon d-inline-block js-btn-icon"><use xlink:href="/wp-content/themes/unseen/public/images/svgsprite.svg#arrow"></use></svg></span></span></span>
+</a>
+</div>
 </div>
 <div class="t-center t-left@sm relative js-content-toggle | js-reveal-anim">
+<form class="dm-brief" id="dm-brief" novalidate>
+<p class="dm-brief__eyebrow">Project request</p>
+<h3 class="dm-brief__title">Tell us what you want to build</h3>
+<fieldset class="dm-brief__services"><legend>What do you need?</legend>
+<label><input type="checkbox" name="service" value="Website"><span>Website</span></label>
+<label><input type="checkbox" name="service" value="System"><span>System</span></label>
+<label><input type="checkbox" name="service" value="Automation"><span>AI &amp; Automation</span></label>
+<label><input type="checkbox" name="service" value="App"><span>App</span></label>
+</fieldset>
+<div class="dm-brief__row">
+<label class="dm-brief__field"><span>Full name</span><input name="name" type="text" maxlength="100" autocomplete="name" required></label>
+<label class="dm-brief__field"><span>Phone</span><input name="phone" type="tel" maxlength="20" autocomplete="tel" placeholder="+971" required></label>
+</div>
+<label class="dm-brief__field"><span>Email</span><input name="email" type="email" maxlength="255" autocomplete="email" placeholder="you@gmail.com" required></label>
+<label class="dm-brief__field"><span>Tell us about your project</span><textarea name="details" rows="3" maxlength="1000"></textarea></label>
+<p class="dm-brief__error" aria-live="polite"></p>
+<button type="submit" class="dm-brief__submit">Send request <span>&#8600;</span></button>
+<p class="dm-brief__done" hidden>Thank you! We'll be in touch soon.</p>
+</form>
 <div data-content="general" class="js-content-toggle-section">
 <div class="t-normal mb-1 t-center overflow-hidden t-left@sm">
 <a href="mailto:info@digitmask.com" class="t-lh-1 t-2 t-no-underline t-300 d-block arrow-link arrow-link--large" data-cursor="hide"><span><span><span>&#11169;&nbsp;&nbsp;</span></span>info@digitmask.com</span></a>
@@ -607,5 +631,6 @@ Sharjah, UAE
 <div class="height-div"></div>
 <script>
 projects = [{"project":{"0internal_or_external":"0","project_grid_category":["branding"],"description":"Websites","title":"Corporate Websites","link":"\/projects\/"},"0internal":{"or":{"external":0}},"external":{"project":{"categories":"a:1:{i:0;s:8:\"branding\";}","description":"Websites","name":"Corporate Websites","url":"\/projects\/"}},"images":[{"name":"dm-websites-1","image":"\/site\/assets\/dm-websites-1.jpg","image_size":[1120,592],"type":"image","position":{"x":0,"y":0,"z":0}}],"internal":{"or":{"external":0}},"videos":false,"models":false},{"project":{"0internal_or_external":"0","project_grid_category":["branding"],"description":"Websites","title":"Online Stores","link":"\/projects\/"},"0internal":{"or":{"external":0}},"external":{"project":{"categories":"a:1:{i:0;s:8:\"branding\";}","description":"Websites","name":"Online Stores","url":"\/projects\/"}},"images":[{"name":"dm-websites-2","image":"\/site\/assets\/dm-websites-2.jpg","image_size":[1120,592],"type":"image","position":{"x":0,"y":0,"z":0}}],"internal":{"or":{"external":0}},"videos":false,"models":false},{"project":{"0internal_or_external":"0","project_grid_category":["digital"],"description":"Systems","title":"CRM & HRMS Systems","link":"\/projects\/"},"0internal":{"or":{"external":0}},"external":{"project":{"categories":"a:1:{i:0;s:7:\"digital\";}","description":"Systems","name":"CRM & HRMS Systems","url":"\/projects\/"}},"images":[{"name":"dm-systems-1","image":"\/site\/assets\/dm-systems-1.jpg","image_size":[1120,592],"type":"image","position":{"x":0,"y":0,"z":0}}],"internal":{"or":{"external":0}},"videos":false,"models":false},{"project":{"0internal_or_external":"0","project_grid_category":["digital"],"description":"Systems","title":"Cloud Business Systems","link":"\/projects\/"},"0internal":{"or":{"external":0}},"external":{"project":{"categories":"a:1:{i:0;s:7:\"digital\";}","description":"Systems","name":"Cloud Business Systems","url":"\/projects\/"}},"images":[{"name":"dm-systems-2","image":"\/site\/assets\/dm-systems-2.jpg","image_size":[1120,592],"type":"image","position":{"x":0,"y":0,"z":0}}],"internal":{"or":{"external":0}},"videos":false,"models":false},{"project":{"0internal_or_external":"0","project_grid_category":["motion"],"description":"AI & Automation","title":"AI Assistants","link":"\/projects\/"},"0internal":{"or":{"external":0}},"external":{"project":{"categories":"a:1:{i:0;s:6:\"motion\";}","description":"AI & Automation","name":"AI Assistants","url":"\/projects\/"}},"images":[{"name":"dm-ai-1","image":"\/site\/assets\/dm-ai-1.jpg","image_size":[1120,592],"type":"image","position":{"x":0,"y":0,"z":0}}],"internal":{"or":{"external":0}},"videos":false,"models":false},{"project":{"0internal_or_external":"0","project_grid_category":["motion"],"description":"AI & Automation","title":"Process Automation","link":"\/projects\/"},"0internal":{"or":{"external":0}},"external":{"project":{"categories":"a:1:{i:0;s:6:\"motion\";}","description":"AI & Automation","name":"Process Automation","url":"\/projects\/"}},"images":[{"name":"dm-ai-2","image":"\/site\/assets\/dm-ai-2.jpg","image_size":[1120,592],"type":"image","position":{"x":0,"y":0,"z":0}}],"internal":{"or":{"external":0}},"videos":false,"models":false},{"project":{"0internal_or_external":"0","project_grid_category":["experiment"],"description":"Apps","title":"Mobile Apps","link":"\/projects\/"},"0internal":{"or":{"external":0}},"external":{"project":{"categories":"a:1:{i:0;s:10:\"experiment\";}","description":"Apps","name":"Mobile Apps","url":"\/projects\/"}},"images":[{"name":"dm-apps-1","image":"\/site\/assets\/dm-apps-1.jpg","image_size":[1120,592],"type":"image","position":{"x":0,"y":0,"z":0}}],"internal":{"or":{"external":0}},"videos":false,"models":false},{"project":{"0internal_or_external":"0","project_grid_category":["experiment"],"description":"Apps","title":"Cross-Platform Apps","link":"\/projects\/"},"0internal":{"or":{"external":0}},"external":{"project":{"categories":"a:1:{i:0;s:10:\"experiment\";}","description":"Apps","name":"Cross-Platform Apps","url":"\/projects\/"}},"images":[{"name":"dm-apps-2","image":"\/site\/assets\/dm-apps-2.jpg","image_size":[1120,592],"type":"image","position":{"x":0,"y":0,"z":0}}],"internal":{"or":{"external":0}},"videos":false,"models":false}]		</script>
+<link rel="stylesheet" href="/site/assets/dm-extras.css?v=2"><script src="/site/assets/dm-extras.js?v=2" defer></script>
 </body>
 </html><!-- WP Fastest Cache file was created in 0.44456386566162 seconds, on 16-09-26 11:37:14 --><!-- via php -->
