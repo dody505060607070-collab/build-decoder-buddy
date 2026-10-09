@@ -1,0 +1,8 @@
+# Roadmap — Digitmask rebrand
+- [x] Logo, name, wording, contact info on all pages
+- [x] Purple → pink → orange dusk tint over the 3D world
+- [x] Project cards renamed to Digitmask services
+- [ ] Arabic version (right-to-left)
+- [ ] Service card images/descriptions (still original project images)
+- [ ] Loader cube letters (still U-N-S-E-E-N)
+- [ ] Accounts page (waiting on user: what it should contain)
