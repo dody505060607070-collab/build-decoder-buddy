@@ -79,9 +79,9 @@ function Pavilion() {
         <p className="absolute bottom-12 left-6 z-10 text-sm opacity-80">Click a display to explore a service.</p>
       )}
       {service !== null && (
-        <div role="dialog" aria-label={SERVICES[service].title} className="absolute bottom-12 left-6 z-10 max-w-sm rounded-lg border border-border bg-background/85 p-6 backdrop-blur">
-          <h2 className="text-2xl font-light">{SERVICES[service].title}</h2>
-          <p className="mt-2 text-sm opacity-80">{SERVICES[service].text}</p>
+        <div role="dialog" aria-label={SERVICES[service]!.title} className="absolute bottom-12 left-6 z-10 max-w-sm rounded-lg border border-border bg-background/85 p-6 backdrop-blur">
+          <h2 className="text-2xl font-light">{SERVICES[service]!.title}</h2>
+          <p className="mt-2 text-sm opacity-80">{SERVICES[service]!.text}</p>
           <button onClick={() => setService(null)} className="mt-4 text-sm underline">Close</button>
         </div>
       )}
